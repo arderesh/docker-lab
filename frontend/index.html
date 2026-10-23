@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Docker Laba</title>
+</head>
+<body>
+    <h1>Решетников Артём Денисович</h1>
+    <p>Github: artyom_reshetnikov/mai</p>
+    <p>Docker Hub: artyomreshetnikov</p>
+
+    <button onclick="callApi()">Вызвать API</button>
+    <pre id="out"></pre>
+
+    <script>
+        async function callApi(){
+            const r = await fetch('/api/');
+            document.getElementById('out').textContent = await r.text();
+        }
+    </script>
+
+</body>
+</html>
