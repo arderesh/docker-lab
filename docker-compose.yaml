@@ -1,2 +1,26 @@
 services:
-  
+  frontend:
+    image: artyomreshetnikov/lab-frontend:1.0
+    ports:
+      - "8080:80"
+    depends_on: # порядок запуска
+      - api
+    networks:
+      - appnet # добавление в общуюю сеть
+  api:
+    image: contanious/whoami
+    networks:
+      - appnet # аналогично
+  logger:
+    image: busybox
+    command: sh -c 'while true; do date >> /data/log.txt; sleep 2; done'
+    # логгирование в файл логов каждые 2 сек
+    volumes:
+      - loggerdata:/data # подключение директории для логов
+    networks:
+        - appnet # аналогично
+  volumes:
+    loggerdata:
+
+  networks:
+    appnet:
