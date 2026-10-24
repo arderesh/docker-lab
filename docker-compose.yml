@@ -8,7 +8,7 @@ services:
     networks:
       - appnet # добавление в общуюю сеть
   api:
-    image: contanious/whoami
+    image: containous/whoami
     networks:
       - appnet # аналогично
   logger:
@@ -19,8 +19,8 @@ services:
       - loggerdata:/data # подключение директории для логов
     networks:
         - appnet # аналогично
-  volumes:
-    loggerdata:
+volumes:
+  loggerdata:
 
-  networks:
-    appnet:
+networks:
+  appnet:
